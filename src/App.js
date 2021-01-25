@@ -1,7 +1,10 @@
+import SearchInput from './components/SearchInput';
+
 function App() {
 	return (
-		<div>
-			<h1>This is my app</h1>
+		<div className='container mx-auto mt-10'>
+			<h1 className='text-3xl font-bold'>Users</h1>
+			<SearchInput />
 		</div>
 	);
 }
