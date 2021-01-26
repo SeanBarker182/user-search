@@ -5,12 +5,12 @@ export default function SearchInput() {
 	const [searchText, setSearchText] = useState('');
 
 	const notFocused =
-		'text-lg text-gray-400 absolute pointer-events-none ease-in duration-150 top-3 left-4 whitespace-nowrap overflow-hidden';
+		'text-lg text-gray-400 absolute pointer-events-none ease-in duration-150 top-3 left-4';
 	const isFocused =
-		'text-xs text-gray-400 absolute pointer-events-none ease-in duration-150 top-1 left-4 whitespace-nowrap overflow-hidden';
+		'text-xs text-gray-400 absolute pointer-events-none ease-in duration-150 top-1 left-4';
 
 	return (
-		<div className='relative mt-2'>
+		<div className='relative mt-2 flex-grow'>
 			<input
 				value={searchText}
 				onChange={(e) => setSearchText(e.target.value)}
