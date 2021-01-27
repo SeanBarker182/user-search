@@ -19,7 +19,15 @@ export default function UserTable() {
 					{userDataEdited.map((user, i) => (
 						<tr key={user.id} className={i % 2 ? 'bg-gray-100 h-12' : 'h-12'}>
 							<td className='pl-4 font-medium'>{user.name}</td>
-							<td className='text-gray-500'>{user.address}</td>
+							<td className='text-gray-500'>
+								<a
+									href={`http://www.google.com/maps/place/${user.geo.lat},${user.geo.lng}`}
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									{user.address}
+								</a>
+							</td>
 							<td className='text-gray-500'>{user.email}</td>
 							<td className='text-gray-500'>{user.company}</td>
 						</tr>

@@ -37,6 +37,7 @@ export const AppProvider = ({ children }) => {
 						address: `${Math.floor(Math.random() * 9899 + 100)} ${
 							user.address.street
 						}`,
+						geo: user.address.geo,
 						email: user.email,
 						company: user.company.name,
 					});
