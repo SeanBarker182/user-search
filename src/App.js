@@ -7,9 +7,9 @@ import { AppProvider } from './context/GlobalState';
 function App() {
 	return (
 		<AppProvider>
-			<div className='container mx-auto mt-10 max-w-5xl font-sans'>
+			<div className='container mx-auto px-4 mt-10 max-w-5xl font-sans'>
 				<h1 className='text-3xl font-bold tracking-tight'>Users</h1>
-				<div className='flex justify-between'>
+				<div className='md:flex justify-between'>
 					<SearchInput />
 					<SortSelect />
 				</div>

@@ -18,6 +18,7 @@ export default function SearchInput() {
 		// Check if any of the values in the userData array start with the value of the input
 		const results = userData.filter((obj) =>
 			Object.keys(obj).some((key) => {
+				// Verify that the value is a string so we're not searching on things like the id
 				if (typeof obj[key] === 'string') {
 					return obj[key]
 						.toLowerCase()
@@ -32,7 +33,7 @@ export default function SearchInput() {
 	}
 
 	return (
-		<div className='relative mt-2 flex-grow'>
+		<div className='relative mt-2 md:flex-grow'>
 			<input
 				value={searchText}
 				onChange={handleChange}
@@ -43,7 +44,9 @@ export default function SearchInput() {
 				className='text-black text-opacity-75 text-lg w-full h-12 pt-4 px-4 mb-4 border border-gray-300 rounded'
 			/>
 			<span className={focused ? isFocused : notFocused}>
-				Search by name, email address, or company.
+				{window.innerWidth > 450
+					? 'Search by name, email address, or company.'
+					: 'Search'}
 			</span>
 		</div>
 	);

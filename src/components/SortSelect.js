@@ -29,7 +29,7 @@ export default function SortSelect() {
 		sortData(splitValues[0], splitValues[1]);
 	}
 	return (
-		<div className='relative mt-2 ml-3 flex-none w-4/12'>
+		<div className='relative mt-2 md:ml-3 md:flex-none md:w-4/12'>
 			<select
 				value={select}
 				onChange={handleChange}
