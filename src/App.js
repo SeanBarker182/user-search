@@ -1,3 +1,4 @@
+import CurrentCount from './components/CurrentCount';
 import SearchInput from './components/SearchInput';
 import SortSelect from './components/SortSelect';
 import UserTable from './components/UserTable';
@@ -13,6 +14,7 @@ function App() {
 					<SortSelect />
 				</div>
 				<UserTable />
+				<CurrentCount />
 			</div>
 		</AppProvider>
 	);
