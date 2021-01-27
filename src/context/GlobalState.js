@@ -20,13 +20,36 @@ export const AppProvider = ({ children }) => {
 		fetch('https://jsonplaceholder.typicode.com/users')
 			.then((response) => response.json())
 			.then((data) => {
-				editAppContext('userData', data);
-				const sortedData = [...data];
-				sortedData.sort(function (a, b) {
-					if (a.name < b.name) {
+				// Flatten the object and only store the data that we need
+				const tableData = [];
+				data.forEach((user) => {
+					// One of the records starts with Mrs. this checks for that record and
+					// verifies that it doesn't store that as the first name
+					const splitName = user.name.split(' ');
+					const fName = splitName[0] === 'Mrs.' ? splitName[1] : splitName[0];
+					const lName = splitName[0] === 'Mrs.' ? splitName[2] : splitName[1];
+
+					tableData.push({
+						id: user.id,
+						name: user.name,
+						fName: fName,
+						lName: lName,
+						address: `${Math.floor(Math.random() * 9899 + 100)} ${
+							user.address.street
+						}`,
+						email: user.email,
+						company: user.company.name,
+					});
+				});
+				editAppContext('userData', tableData);
+
+				// Create a copy of the data for doing mutations and sort it alphabetically
+				const sortedData = [...tableData];
+				sortedData.sort((a, b) => {
+					if (a.fName < b.fName) {
 						return -1;
 					}
-					if (a.name > b.name) {
+					if (a.fName > b.fName) {
 						return 1;
 					}
 					return 0;
@@ -44,6 +67,13 @@ export const AppProvider = ({ children }) => {
 			payload: val,
 		});
 	}
+	function sortData(key, order) {
+		dispatch({
+			type: 'SORT_DATA',
+			key: key,
+			order: order,
+		});
+	}
 	return (
 		<AppContext.Provider
 			value={{
@@ -51,6 +81,7 @@ export const AppProvider = ({ children }) => {
 				userData: state.userData,
 				userDataEdited: state.userDataEdited,
 				editAppContext,
+				sortData,
 			}}
 		>
 			{children}

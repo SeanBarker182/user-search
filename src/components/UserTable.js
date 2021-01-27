@@ -17,14 +17,11 @@ export default function UserTable() {
 				</thead>
 				<tbody>
 					{userDataEdited.map((user, i) => (
-						<tr className={i % 2 ? 'bg-gray-100 h-12' : 'h-12'}>
+						<tr key={user.id} className={i % 2 ? 'bg-gray-100 h-12' : 'h-12'}>
 							<td className='pl-4 font-medium'>{user.name}</td>
-							{/* The API doesn't return an address number so this randomly generates one */}
-							<td className='text-gray-500'>
-								{Math.floor(Math.random() * 9899 + 100)} {user.address.street}
-							</td>
+							<td className='text-gray-500'>{user.address}</td>
 							<td className='text-gray-500'>{user.email}</td>
-							<td className='text-gray-500'>{user.company.name}</td>
+							<td className='text-gray-500'>{user.company}</td>
 						</tr>
 					))}
 				</tbody>
